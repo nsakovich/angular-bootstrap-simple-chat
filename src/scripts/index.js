@@ -14,6 +14,7 @@
 				username: '=',
 				myUserId: '=',
 				inputPlaceholderText: '@',
+				isHidden: '=',
 				submitButtonText: '@',
 				title: '@',
 				theme: '@',
@@ -115,14 +116,18 @@
 		function toggle() {
 			if(vm.isHidden) {
 				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
-				vm.panelStyle = {'display': 'block'};
+				vm.panelStyle = {'display': 'block', 'height': 'auto'};
 				vm.isHidden = false;
 				scrollToBottom();
 			} else {
 				vm.chatButtonClass = 'fa-expand icon_minim';
-				vm.panelStyle = {'display': 'none'};
+				vm.panelStyle = {'display': 'none', 'height': '0'};
 				vm.isHidden = true;
 			}
 		}
+
+		$timeout(function () {
+    	toggle();
+    });
 	}
 })();
